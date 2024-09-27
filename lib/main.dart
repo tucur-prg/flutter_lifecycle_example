@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'src/home.dart';
 
 void main() {
-  print("LOGGING: main()");
+  print("MyLog: flutter: main()");
 
   runApp(const MyApp());
 }
@@ -17,7 +17,7 @@ final goRouter = GoRouter(
       path: '/home',
       name: 'initial',
       pageBuilder: (context, state) {
-        print("LOGGING: GoRoute(initial)");
+        print("MyLog: flutter: GoRoute(initial)");
         return MaterialPage(
           key: state.pageKey,
           child: const MyHomePage(title: 'Flutter Demo Initial Page'),
@@ -29,7 +29,7 @@ final goRouter = GoRouter(
       path: '/details',
       name: 'details',
       pageBuilder: (context, state) {
-        print("LOGGING: GoRoute(details)");
+        print("MyLog: flutter: GoRoute(details)");
         return MaterialPage(
           key: state.pageKey,
           child: const MyHomePage(title: 'Flutter Demo Details Page'),
@@ -41,7 +41,7 @@ final goRouter = GoRouter(
       path: '/app/link',
       name: 'universal_links',
       pageBuilder: (context, state) {
-        print("LOGGING: GoRoute(universal_links)");
+        print("MyLog: flutter: GoRoute(universal_links)");
         return MaterialPage(
           key: state.pageKey,
           child: const MyHomePage(title: 'Flutter Demo UniversalLinks Page'),
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("LOGGING: MyApp.build()");
+    print("MyLog: flutter: MyApp.build()");
 
     return MaterialApp.router(
       routerConfig: goRouter,

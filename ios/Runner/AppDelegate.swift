@@ -7,9 +7,17 @@ import UIKit
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    NSLog("LOGGING: NSLog: application(:didFinishLaunchingWithOptions)")
+    NSLog("MyLog: native: application(:didFinishLaunchingWithOptions)")
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+    
+  override func application(
+    _ application: UIApplication,
+    willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?
+  ) -> Bool {
+      NSLog("MyLog: native: application(:willFinishLaunchingWithOptions)")
+      return super.application(application, willFinishLaunchingWithOptions: launchOptions)
   }
 
   override func application(
@@ -17,18 +25,20 @@ import UIKit
     continue continueUserActivity: NSUserActivity,
     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
   ) -> Bool {
-    NSLog("LOGGING: NSLog: application(:continue, :restorationHandler)")
+    NSLog("MyLog: native: application(:continue, :restorationHandler)")
     if continueUserActivity.activityType == NSUserActivityTypeBrowsingWeb {
       if let url = continueUserActivity.webpageURL {
-        NSLog("LOGGING: %@", url.absoluteString)
+        NSLog("MyLog: native: %@", url.absoluteString)
       } else {
-        NSLog("LOGGING: url = null")
+        NSLog("MyLog: native: url = null")
       }
     }
 
-    Thread.sleep(forTimeInterval: 3.0)
-    NSLog("LOGGING: thead.sleep")
+    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+      NSLog("MyLog: native: asyncAfter(5.0)")
+      super.application(application, continue: continueUserActivity, restorationHandler: restorationHandler)
+    }
 
-    return super.application(application, continue: continueUserActivity, restorationHandler: restorationHandler)
+    return true
   }
 }
