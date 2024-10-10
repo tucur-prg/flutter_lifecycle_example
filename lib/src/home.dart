@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widget/card.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -19,7 +21,15 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    print("MyLog: flutter: MyHomePage.initState()");
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print("MyLog: flutter: MyHomePage.build()");
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -36,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            CardWidget(),
           ],
         ),
       ),
