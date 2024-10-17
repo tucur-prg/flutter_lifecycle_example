@@ -17,6 +17,12 @@ class _State extends State<TextWidget> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    print("MyLog: flutter: TextWidget.dispose(${widget.data})");
+  }
+
+  @override
   Widget build(BuildContext context) {
     print("MyLog: flutter: TextWidget.build(${widget.data})");
     return Text(widget.data);

@@ -21,6 +21,12 @@ class _State extends State<CardWidget> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    print("MyLog: flutter: CardWidget.dispose()");
+  }
+
+  @override
   Widget build(BuildContext context) {
     print("MyLog: flutter: CardWidget.build()");
     return FutureBuilder<String>(
